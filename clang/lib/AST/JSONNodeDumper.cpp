@@ -837,6 +837,7 @@ void JSONNodeDumper::VisitFieldDecl(const FieldDecl *FD) {
 void JSONNodeDumper::VisitFunctionDecl(const FunctionDecl *FD) {
   VisitNamedDecl(FD);
   JOS.attribute("type", createQualType(FD->getType()));
+  JOS.attribute("return_type", createQualType(FD->getDeclaredReturnType()));
   StorageClass SC = FD->getStorageClass();
   if (SC != SC_None)
     JOS.attribute("storageClass", VarDecl::getStorageClassSpecifierString(SC));
